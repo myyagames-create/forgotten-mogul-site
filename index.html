@@ -2,10 +2,1616 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Forgotten Mogul</title>
+  <meta name="description" content="Forgotten Mogul official artist website. Cinematic music, emotional storytelling, and modern atmosphere." />
+  <style>
+    :root {
+      --bg: #05060a;
+      --bg-soft: #0b0f18;
+      --panel: rgba(255,255,255,0.05);
+      --panel-strong: rgba(255,255,255,0.08);
+      --line: rgba(255,255,255,0.1);
+      --line-strong: rgba(255,255,255,0.16);
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.74);
+      --soft: rgba(255,255,255,0.5);
+      --pink: #ee4bdb;
+      --blue: #39c8ff;
+      --gold: #ffcf77;
+      --shadow: 0 24px 80px rgba(0,0,0,0.5);
+      --shadow-soft: 0 12px 40px rgba(0,0,0,0.28);
+      --radius: 28px;
+      --radius-sm: 18px;
+      --max: 1220px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(238,75,219,0.15), transparent 22%),
+        radial-gradient(circle at 85% 12%, rgba(57,200,255,0.13), transparent 18%),
+        radial-gradient(circle at bottom center, rgba(255,207,119,0.06), transparent 22%),
+        linear-gradient(180deg, #05060a 0%, #090c14 42%, #05060a 100%);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(5,6,10,0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.92rem;
+    }
+
+    .brand-mark {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), var(--blue));
+      box-shadow: 0 0 24px rgba(238,75,219,0.42);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--soft);
+      font-size: 0.96rem;
+      transition: color 0.18s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 600;
+      transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.24);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.32);
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, #ffffff, #f0f2f7);
+      color: #0a0d14;
+      border-color: #fff;
+    }
+
+    .button-secondary {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.28;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 360px;
+      height: 360px;
+      background: var(--pink);
+      top: -120px;
+      left: -120px;
+    }
+
+    .hero::after {
+      width: 340px;
+      height: 340px;
+      background: var(--blue);
+      right: -90px;
+      bottom: -40px;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 42px;
+      align-items: center;
+      grid-template-columns: 1.08fr 0.92fr;
+      padding: 84px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      box-shadow: var(--shadow-soft);
+    }
+
+    h1 {
+      margin: 18px 0 16px;
+      font-size: clamp(3rem, 6vw, 6rem);
+      line-height: 0.93;
+      letter-spacing: -0.05em;
+      max-width: 8.6ch;
+      text-shadow: 0 0 24px rgba(238,75,219,0.15);
+    }
+
+    .hero p {
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.85;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.035));
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .stat .label {
+      font-size: 0.72rem;
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .stat .value {
+      margin-top: 10px;
+      font-size: 0.98rem;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .feature-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 34px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(238,75,219,0.12), transparent 36%);
+      pointer-events: none;
+    }
+
+    .feature-inner {
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.24);
+      border-radius: 26px;
+      padding: 18px;
+    }
+
+    .feature-meta {
+      color: var(--soft);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+    }
+
+    .feature-title {
+      margin: 12px 0 6px;
+      font-size: 2.15rem;
+      line-height: 1.05;
+    }
+
+    .feature-sub {
+      color: #f2a9ef;
+      font-size: 1.12rem;
+      margin-bottom: 18px;
+    }
+
+    .cover {
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+      aspect-ratio: 1 / 1;
+      background: #111;
+    }
+
+    .cover img,
+    .release-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .cover:hover img,
+    .release-card:hover .release-art img {
+      transform: scale(1.03);
+    }
+
+    .feature-copy {
+      margin-top: 18px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.98rem;
+    }
+
+    .feature-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .feature-actions a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 15px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.85rem;
+      color: var(--text);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .feature-actions a:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+    }
+
+    .featured-embed {
+      margin-top: 18px;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow-soft);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .featured-embed iframe {
+      display: block;
+      width: 100%;
+      min-height: 152px;
+      border: 0;
+    }
+
+    section {
+      padding: 82px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .section-kicker {
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 0.74rem;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 3.6vw, 3.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .section-head p,
+    .about-copy p,
+    .message-card p,
+    .contact-card p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .about-grid,
+    .message-grid,
+    .contact-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.035));
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .pillar {
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .pillar h3,
+    .release-card h3,
+    .contact-card h3,
+    .message-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.22rem;
+    }
+
+    .pillar p,
+    .release-card p,
+    .platform-grid a,
+    .contact-line,
+    .small {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .release-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .release-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.035));
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 24px;
+      padding: 18px;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .release-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.02));
+      pointer-events: none;
+    }
+
+    .release-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,0.18);
+      box-shadow: 0 28px 60px rgba(0,0,0,0.34);
+    }
+
+    .release-art {
+      position: relative;
+      border-radius: 18px;
+      margin-bottom: 16px;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(135deg, rgba(238,75,219,0.18), rgba(8,8,12,1), rgba(57,200,255,0.18));
+    }
+
+    .release-art img,
+    .release-art video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .release-art video {
+      opacity: 0;
+      transition: opacity 0.28s ease;
+      pointer-events: none;
+      background: #080a10;
+    }
+
+    .release-art.has-preview:hover video,
+    .release-card.is-playing .release-art video {
+      opacity: 1;
+    }
+
+    .release-art.has-preview:hover img,
+    .release-card.is-playing .release-art img {
+      opacity: 0;
+    }
+
+    .release-preview-badge {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      z-index: 2;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(5,6,10,0.7);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .release-type {
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.72rem;
+      margin-bottom: 10px;
+    }
+
+    .coming {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 9px 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      font-size: 0.84rem;
+      color: var(--text);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .release-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .release-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.11);
+      font-size: 0.84rem;
+      color: var(--text);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .release-links a:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+    }
+
+    .connect-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.connect-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(5,6,10,0.88), rgba(5,6,10,0.72)),
+    url("images/connect-atmosphere.png") center/cover no-repeat;
+  opacity: 0.14;
+  pointer-events: none;
+  z-index: 0;
+  animation: connectDrift 22s ease-in-out infinite alternate;
+}
+
+.connect-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 38%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.connect-section .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes connectDrift {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: scale(1.04) translateY(-10px);
+  }
+}
+
+.platform-featured {
+  margin-bottom: 28px;
+}
+
+.platform-hero {
+  display: block;
+  border-radius: 26px;
+  padding: 28px;
+  background: radial-gradient(circle at top left, rgba(29,185,84,0.25), rgba(0,0,0,0.6));
+  border: 1px solid rgba(29,185,84,0.35);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.platform-hero:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 25px 60px rgba(29,185,84,0.25);
+}
+
+.platform-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.platform-hero-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.platform-hero-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.platform-hero-sub {
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.platform-hero-cta {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.platform-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 18px;
+    }
+
+    .platform-card {
+      position: relative;
+      padding: 18px 18px 16px;
+      border-radius: 22px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+        var(--card-bg, none);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      min-height: 124px;
+      color: var(--text);
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .platform-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5,6,10,0.2), rgba(5,6,10,0.65)),
+        radial-gradient(circle at top left, rgba(255,255,255,0.16), transparent 58%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    .platform-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.16), transparent);
+      opacity: 0;
+      transform: translateX(-120%);
+      transition: transform 0.55s ease, opacity 0.55s ease;
+      pointer-events: none;
+    }
+
+    .platform-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: rgba(255,255,255,0.25);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+    }
+
+    .platform-card:hover::before,
+    .platform-card.has-bg::before {
+      opacity: 1;
+    }
+
+    .platform-card:hover::after {
+      opacity: 1;
+      transform: translateX(120%);
+    }
+
+    .platform-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .platform-copy {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: flex-start;
+    }
+
+    .platform-name {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .platform-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .platform-card.spotify .platform-icon {
+      background: rgba(29, 185, 84, 0.16);
+      border: 1px solid rgba(29, 185, 84, 0.34);
+      color: #1DB954;
+    }
+
+    .platform-card.spotify:hover {
+      border-color: rgba(29, 185, 84, 0.42);
+      box-shadow: 0 18px 40px rgba(30, 215, 96, 0.22);
+    }
+
+    .platform-card.apple .platform-icon {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #ffffff;
+    }
+
+    .platform-card.apple:hover {
+      border-color: rgba(255,255,255,0.24);
+      box-shadow: 0 18px 40px rgba(255,255,255,0.16);
+    }
+
+    .platform-card.youtube .platform-icon {
+      background: rgba(255, 0, 0, 0.14);
+      border: 1px solid rgba(255, 0, 0, 0.34);
+      color: #ff3b30;
+    }
+
+    .platform-card.youtube:hover {
+      border-color: rgba(255, 0, 0, 0.36);
+      box-shadow: 0 18px 40px rgba(255, 0, 0, 0.2);
+    }
+
+    .platform-card.instagram .platform-icon {
+      background: linear-gradient(135deg, rgba(225,48,108,0.18), rgba(252,175,69,0.16));
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #ffffff;
+    }
+
+    .platform-card.instagram:hover {
+      border-color: rgba(225, 48, 108, 0.34);
+      box-shadow: 0 18px 40px rgba(225, 48, 108, 0.22);
+    }
+
+    .platform-card.tiktok .platform-icon {
+      background: linear-gradient(135deg, rgba(0,242,234,0.16), rgba(255,0,80,0.16));
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #ffffff;
+    }
+
+    .platform-card.tiktok:hover {
+      border-color: rgba(0, 242, 234, 0.3);
+      box-shadow: 0 18px 40px rgba(0, 242, 234, 0.18);
+    }
+
+    .platform-grid a {
+      text-align: center;
+      padding: 18px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.09);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .platform-grid a:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.24);
+    }
+
+    .contact-line {
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      margin-top: 14px;
+      word-break: break-word;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 28px 0 50px;
+      color: var(--soft);
+      font-size: 0.92rem;
+    }
+
+    .player-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(4,6,10,0.8);
+      backdrop-filter: blur(16px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.24s ease, visibility 0.24s ease;
+    }
+
+    .player-modal.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .player-modal-panel {
+      width: min(920px, 100%);
+      max-height: 90vh;
+      overflow: auto;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(16,19,28,0.96), rgba(7,9,14,0.96));
+      box-shadow: 0 30px 90px rgba(0,0,0,0.55);
+      position: relative;
+    }
+
+    .player-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 2;
+      transition: background 0.18s ease, transform 0.18s ease;
+    }
+
+    .player-modal-close:hover {
+      background: rgba(255,255,255,0.12);
+      transform: scale(1.04);
+    }
+
+    .player-modal-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 28px;
+      padding: 28px;
+      align-items: start;
+    }
+
+    .player-modal-art {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+      background: #10131b;
+      aspect-ratio: 1 / 1;
+    }
+
+    .player-modal-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .player-modal-label {
+      color: var(--soft);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+    }
+
+    .player-modal-title {
+      margin: 12px 0 8px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .player-modal-subtitle {
+      color: #f2a9ef;
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+
+    .player-modal-copy {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .player-modal-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .player-modal-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 15px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.85rem;
+      color: var(--text);
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .player-modal-links a:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .player-embed-wrap {
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .player-embed-wrap iframe {
+      display: block;
+      width: 100%;
+      min-height: 352px;
+      border: 0;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .about-grid,
+      .message-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pillars,
+      .release-grid,
+      .platform-grid,
+      .hero-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      section,
+      .hero-grid {
+        padding-top: 56px;
+        padding-bottom: 56px;
+      }
+
+      .pillars,
+      .release-grid,
+      .platform-grid,
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .feature-title {
+        font-size: 1.7rem;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .player-modal-grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
-<body style="background:black; color:white; font-family:sans-serif; display:flex; align-items:center; justify-content:center; height:100vh;">
-  <h1>Forgotten Mogul 🎵</h1>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <span class="brand-mark"></span>
+        Forgotten Mogul
+      </div>
+      <div class="nav-links">
+        <a href="#latest">Latest</a>
+        <a href="#about">About</a>
+        <a href="#music">Music</a>
+        <a href="#connect">Connect</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Official Artist Site</div>
+        <h1>Cinematic sound. Emotional storytelling. Unforgettable atmosphere.</h1>
+        <p>
+          Forgotten Mogul blends cinematic sound with emotional storytelling, creating music that feels like a world you can step into.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#latest">See the latest release</a>
+          <a class="button button-secondary" href="#connect">Open artist links</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="label">Style</div>
+            <div class="value">Cinematic, emotional, modern, and genre-blending.</div>
+          </div>
+          <div class="stat">
+            <div class="label">Identity</div>
+            <div class="value">Mysterious by design so the work stays center stage.</div>
+          </div>
+          <div class="stat">
+            <div class="label">Mission</div>
+            <div class="value">Create songs and visuals that leave light in the dark.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-card" id="latest">
+        <div class="feature-inner">
+          <div class="feature-meta">Latest release spotlight</div>
+          <div class="feature-title">On The Prowl</div>
+          <div class="feature-sub">Club Mix</div>
+          <div class="cover">
+            <img src="images/on-the-prowl-cover.png" alt="On The Prowl Club Mix cover art" />
+          </div>
+          <p class="feature-copy">
+            A neon-lit club record built for tension, motion, and replay. This release leads with seductive energy,
+            cinematic atmosphere, and a polished late-night edge. The track is currently unreleased, so this section
+            works as a teaser until streaming links go live.
+          </p>
+          <div class="feature-actions">
+            <a href="#music">View release catalog</a>
+            <a href="#connect">Follow the artist</a>
+          </div>
+          <div class="coming">Coming soon</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">About the brand</div>
+          <h2>A faceless artist project built to feel larger than one song.</h2>
+        </div>
+        <p>
+          Forgotten Mogul blends late-night energy, reflective songwriting, and visually driven worldbuilding.
+          The mystery is intentional. The focus stays on the sound, the emotion, and the atmosphere surrounding each release.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="panel about-copy">
+          <p>
+            This brand creates music that feels cinematic without losing emotional honesty.
+            Each release blends energy, story, and atmosphere into something meant to be felt — not just heard.
+          </p>
+        </div>
+        <div class="pillars">
+          <div class="pillar">
+            <h3>Cinematic Identity</h3>
+            <p>Every release is treated like a scene, with atmosphere, color, motion, and tension guiding the experience.</p>
+          </div>
+          <div class="pillar">
+            <h3>Emotion First</h3>
+            <p>The songs aim to make people feel something real, whether the energy is vulnerable, romantic, or explosive.</p>
+          </div>
+          <div class="pillar">
+            <h3>Faceless Brand</h3>
+            <p>The hidden identity keeps the work at the center and gives the entire project a stronger sense of intrigue.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="music">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Music</div>
+          <h2>Release catalog</h2>
+        </div>
+        <p>
+          Explore the catalog.
+        </p>
+      </div>
+
+      <div class="release-grid">
+        <article class="release-card" data-title="On The Prowl (Club Mix)" data-subtitle="Club Mix" data-art="images/on-the-prowl-cover.png" data-description="A polished nightlife record with neon tension, seductive rhythm, and strong replay energy." data-spotify="" data-apple="" data-youtube="" data-embed="">
+          <div class="release-art has-preview">
+            <img src="images/on-the-prowl-cover.png" alt="On The Prowl Club Mix artwork" />
+            <video muted loop playsinline preload="metadata" poster="images/on-the-prowl-cover.png" data-preview="videos/on-the-prowl-club-mix-preview.mp4"></video>
+            <div class="release-preview-badge">Hover preview</div>
+          </div>
+          <div class="release-type">Single</div>
+          <h3>On The Prowl (Club Mix)</h3>
+          <p>A polished nightlife record with neon tension, seductive rhythm, and strong replay energy.</p>
+          <div class="coming">Coming soon</div>
+        </article>
+
+        <article class="release-card" data-title="On The Prowl" data-subtitle="Single" data-art="images/on-the-prowl.png" data-description="The original version of On The Prowl, bringing the story and energy to life." data-spotify="" data-apple="" data-youtube="" data-embed="">
+          <div class="release-art has-preview">
+            <img src="images/on-the-prowl.png" alt="On The Prowl artwork" />
+            <video muted loop playsinline preload="metadata" poster="images/on-the-prowl.png" data-preview="videos/on-the-prowl-preview.mp4"></video>
+            <div class="release-preview-badge">Hover preview</div>
+          </div>
+          <div class="release-type">Single</div>
+          <h3>On The Prowl</h3>
+          <p>The original version of On The Prowl, bringing the story and energy to life.</p>
+          <div class="coming">Releases April 10, 2026</div>
+        </article>
+
+        <article class="release-card" data-title="Carina Mia (Club Mix)" data-subtitle="Single" data-art="images/carina-mia.png" data-description="A high-energy club track blending Mediterranean influence with modern sound." data-spotify="https://open.spotify.com/album/1q3EKV3lDApNcBLPcjiJCT?si=gyhpNqMrTeWvfJt8LqBrOQ" data-apple="https://music.apple.com/us/album/carina-mia-club-mix-single/1889889998" data-youtube="https://youtu.be/tgNiUDgvv1c?si=PWYrOF6HPOUTJ3P3" data-embed="https://open.spotify.com/embed/album/1q3EKV3lDApNcBLPcjiJCT?utm_source=generator">
+          <div class="release-art has-preview">
+            <img src="images/carina-mia.png" alt="Carina Mia Club Mix artwork" />
+            <video muted loop playsinline preload="metadata" poster="images/carina-mia.png" data-preview="videos/carina-mia-preview.mp4"></video>
+            <div class="release-preview-badge">Hover preview</div>
+          </div>
+          <div class="release-type">Single</div>
+          <h3>Carina Mia (Club Mix)</h3>
+          <p>A high-energy club track blending Mediterranean influence with modern sound.</p>
+          <div class="release-links">
+            <a href="https://open.spotify.com/album/1q3EKV3lDApNcBLPcjiJCT?si=gyhpNqMrTeWvfJt8LqBrOQ" target="_blank" rel="noopener noreferrer">Spotify</a>
+            <a href="https://music.apple.com/us/album/carina-mia-club-mix-single/1889889998" target="_blank" rel="noopener noreferrer">Apple</a>
+            <a href="https://youtu.be/tgNiUDgvv1c?si=PWYrOF6HPOUTJ3P3" target="_blank" rel="noopener noreferrer">YouTube</a>
+          </div>
+        </article>
+
+        <article class="release-card" data-title="Wife Crush" data-subtitle="Single" data-art="images/wife-crush.png" data-description="A bold anthem about confidence, attraction, and undeniable presence." data-spotify="https://open.spotify.com/track/2c6m2eWzw5ZbPRlixz5ZM4?si=8ea36a02705643e7" data-apple="https://music.apple.com/us/song/wife-crush/1883243685" data-youtube="https://youtu.be/4I8uLTMsroA?si=WijAdITFN4eG5a_f" data-embed="https://open.spotify.com/embed/track/2c6m2eWzw5ZbPRlixz5ZM4?utm_source=generator">
+          <div class="release-art has-preview">
+            <img src="images/wife-crush.png" alt="Wife Crush artwork" />
+            <video muted loop playsinline preload="metadata" poster="images/wife-crush.png" data-preview="videos/wife-crush-preview.mp4"></video>
+            <div class="release-preview-badge">Hover preview</div>
+          </div>
+          <div class="release-type">Single</div>
+          <h3>Wife Crush</h3>
+          <p>A bold anthem about confidence, attraction, and undeniable presence.</p>
+          <div class="release-links">
+            <a href="https://open.spotify.com/track/2c6m2eWzw5ZbPRlixz5ZM4?si=8ea36a02705643e7" target="_blank" rel="noopener noreferrer">Spotify</a>
+            <a href="https://music.apple.com/us/song/wife-crush/1883243685" target="_blank" rel="noopener noreferrer">Apple</a>
+            <a href="https://youtu.be/4I8uLTMsroA?si=WijAdITFN4eG5a_f" target="_blank" rel="noopener noreferrer">YouTube</a>
+          </div>
+        </article>
+
+        <article class="release-card" data-title="Choose You Again" data-subtitle="Single" data-art="images/choose-you-again.png" data-description="A cinematic love story about choosing the same person, again and again." data-spotify="https://open.spotify.com/track/2KOG8MgrEXDmoVVPxjoRvP?si=c9e8e092d25549a7" data-apple="https://music.apple.com/us/song/choose-you-agian/1883229090" data-youtube="https://youtu.be/mhqoapIvvk4?si=lM0WWpiZeZEy30QY" data-embed="https://open.spotify.com/embed/track/2KOG8MgrEXDmoVVPxjoRvP?utm_source=generator">
+          <div class="release-art has-preview">
+            <img src="images/choose-you-again.png" alt="Choose You Again artwork" />
+            <video muted loop playsinline preload="metadata" poster="images/choose-you-again.png" data-preview="videos/choose-you-again-preview.mp4"></video>
+            <div class="release-preview-badge">Hover preview</div>
+          </div>
+          <div class="release-type">Single</div>
+          <h3>Choose You Again</h3>
+          <p>A cinematic love story about choosing the same person, again and again.</p>
+          <div class="release-links">
+            <a href="https://open.spotify.com/track/2KOG8MgrEXDmoVVPxjoRvP?si=c9e8e092d25549a7" target="_blank" rel="noopener noreferrer">Spotify</a>
+            <a href="https://music.apple.com/us/song/choose-you-agian/1883229090" target="_blank" rel="noopener noreferrer">Apple</a>
+            <a href="https://youtu.be/mhqoapIvvk4?si=lM0WWpiZeZEy30QY" target="_blank" rel="noopener noreferrer">YouTube</a>
+          </div>
+        </article>
+
+        <article class="release-card" data-title="For Them I Rise" data-subtitle="Single" data-art="images/for-them-i-rise.png" data-description="A powerful track about purpose, sacrifice, and rising for the ones who matter most." data-spotify="https://open.spotify.com/track/6eZGESZ8fBy4WBLCvRYQsO?si=0cd12b4fa8bb4067" data-apple="https://music.apple.com/us/album/for-them-i-rise-single/1866218379" data-youtube="https://youtu.be/oH-AxMoF6dw?si=LGevgrMrlTUMsmvJ" data-embed="https://open.spotify.com/embed/track/6eZGESZ8fBy4WBLCvRYQsO?utm_source=generator">
+          <div class="release-art has-preview">
+            <img src="images/for-them-i-rise.png" alt="For Them I Rise artwork" />
+            <video muted loop playsinline preload="metadata" poster="images/for-them-i-rise.png" data-preview="videos/for-them-i-rise-preview.mp4"></video>
+            <div class="release-preview-badge">Hover preview</div>
+          </div>
+          <div class="release-type">Single</div>
+          <h3>For Them I Rise</h3>
+          <p>A powerful track about purpose, sacrifice, and rising for the ones who matter most.</p>
+          <div class="release-links">
+            <a href="https://open.spotify.com/track/6eZGESZ8fBy4WBLCvRYQsO?si=0cd12b4fa8bb4067" target="_blank" rel="noopener noreferrer">Spotify</a>
+            <a href="https://music.apple.com/us/album/for-them-i-rise-single/1866218379" target="_blank" rel="noopener noreferrer">Apple</a>
+            <a href="https://youtu.be/oH-AxMoF6dw?si=LGevgrMrlTUMsmvJ" target="_blank" rel="noopener noreferrer">YouTube</a>
+          </div>
+        </article>
+
+        <article class="release-card" data-title="My Soul Beats Again" data-subtitle="Single" data-art="images/my-soul-beats-again.png" data-description="A rebirth anthem about rediscovery, purpose, and finding your fire again." data-spotify="https://open.spotify.com/album/0okKgrE7Gw1cnpfzOsrWwj?si=m0AWiQ9cQbWXKNeRZmf9dA" data-apple="https://music.apple.com/us/album/my-soul-beats-again-single/1863251216" data-youtube="https://youtu.be/gQSo9Vd1OH4?si=onYUnc_xAeuZTp5A" data-embed="https://open.spotify.com/embed/album/0okKgrE7Gw1cnpfzOsrWwj?utm_source=generator">
+          <div class="release-art has-preview">
+            <img src="images/my-soul-beats-again.png" alt="My Soul Beats Again artwork" />
+            <video muted loop playsinline preload="metadata" poster="images/my-soul-beats-again.png" data-preview="videos/my-soul-beats-again-preview.mp4"></video>
+            <div class="release-preview-badge">Hover preview</div>
+          </div>
+          <div class="release-type">Single</div>
+          <h3>My Soul Beats Again</h3>
+          <p>A rebirth anthem about rediscovery, purpose, and finding your fire again.</p>
+          <div class="release-links">
+            <a href="https://open.spotify.com/album/0okKgrE7Gw1cnpfzOsrWwj?si=m0AWiQ9cQbWXKNeRZmf9dA" target="_blank" rel="noopener noreferrer">Spotify</a>
+            <a href="https://music.apple.com/us/album/my-soul-beats-again-single/1863251216" target="_blank" rel="noopener noreferrer">Apple</a>
+            <a href="https://youtu.be/gQSo9Vd1OH4?si=onYUnc_xAeuZTp5A" target="_blank" rel="noopener noreferrer">YouTube</a>
+          </div>
+        </article>
+
+        <article class="release-card" data-title="Ink of the Soul" data-subtitle="Single" data-art="images/ink-of-the-soul.png" data-description="A signature track about creation, meaning, and writing your life into existence." data-spotify="https://open.spotify.com/track/0ELtWcDzCV9c364f7vt4VF?si=4f032ebe561a4683" data-apple="https://music.apple.com/us/album/ink-of-the-soul-single/1859000611" data-youtube="https://youtu.be/zAGasPXGghw?si=2EM2n4EZ0IPNntS5" data-embed="https://open.spotify.com/embed/track/0ELtWcDzCV9c364f7vt4VF?utm_source=generator">
+          <div class="release-art has-preview">
+            <img src="images/ink-of-the-soul.png" alt="Ink of the Soul artwork" />
+            <video muted loop playsinline preload="metadata" poster="images/ink-of-the-soul.png" data-preview="videos/ink-of-the-soul-preview.mp4"></video>
+            <div class="release-preview-badge">Hover preview</div>
+          </div>
+          <div class="release-type">Single</div>
+          <h3>Ink of the Soul</h3>
+          <p>A signature track about creation, meaning, and writing your life into existence.</p>
+          <div class="release-links">
+            <a href="https://open.spotify.com/track/0ELtWcDzCV9c364f7vt4VF?si=4f032ebe561a4683" target="_blank" rel="noopener noreferrer">Spotify</a>
+            <a href="https://music.apple.com/us/album/ink-of-the-soul-single/1859000611" target="_blank" rel="noopener noreferrer">Apple</a>
+            <a href="https://youtu.be/zAGasPXGghw?si=2EM2n4EZ0IPNntS5" target="_blank" rel="noopener noreferrer">YouTube</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Listen now</div>
+          <h2>Featured streaming picks</h2>
+        </div>
+        <p>
+          A direct way to hear key releases without leaving the site.
+        </p>
+      </div>
+
+      <div class="message-grid" style="margin-bottom: 24px;">
+        <div class="panel message-card">
+          <div class="section-kicker">Spotlight player</div>
+          <h3>Carina Mia (Club Mix)</h3>
+          <div class="featured-embed">
+            <iframe src="https://open.spotify.com/embed/album/1q3EKV3lDApNcBLPcjiJCT?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="panel message-card">
+          <div class="section-kicker">Spotlight player</div>
+          <h3>Wife Crush</h3>
+          <div class="featured-embed">
+            <iframe src="https://open.spotify.com/embed/track/2c6m2eWzw5ZbPRlixz5ZM4?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap message-grid">
+      <div class="panel message-card">
+        <div class="section-kicker">Brand message</div>
+        <h3>Built to inspire, uplift, and leave an impression.</h3>
+        <p>
+          Forgotten Mogul is more than a release name. It is a creative world built through songs, visuals, and ideas that aim to stay with people.
+          Whether through a club mix, a lyric-driven record, or a cinematic visual, the goal is always the same: make something memorable.
+        </p>
+      </div>
+      <div class="panel message-card">
+        <div class="section-kicker">Current stage</div>
+        <h3>Independent. Intentional. Growing.</h3>
+        <p>
+          Every release adds another chapter to the Forgotten Mogul world, building a catalog shaped by story, emotion, and atmosphere.
+        </p>
+        <div class="feature-actions">
+          <a href="https://open.spotify.com/artist/3DDj1UBUSsYUP8fk9DoxZ8?si=4Kj2Mpx5T3SfXs-XNM7tUg" target="_blank" rel="noopener noreferrer">Open Spotify</a>
+          <a href="https://youtube.com/channel/UC0DlPLHrJIKPKnW_WjzF8fg?si=v9PFK20_A8h_bwTT" target="_blank" rel="noopener noreferrer">Open YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="connect" class="connect-section">
+    <div class="wrap contact-grid">
+      <div class="panel contact-card">
+        <div class="section-kicker">Streaming and social</div>
+        <h3>Follow the world of Forgotten Mogul</h3>
+        <div class="platform-featured">
+  <a class="platform-hero spotify" href="https://open.spotify.com/artist/3DDj1UBUSsYUP8fk9DoxZ8?si=4Kj2Mpx5T3SfXs-XNM7tUg" target="_blank" rel="noopener noreferrer">
+    <div class="platform-hero-content">
+      <div class="platform-hero-top">
+        <div class="platform-icon">♫</div>
+        <div class="platform-hero-title">Spotify</div>
+      </div>
+      <div class="platform-hero-sub">Primary listening platform</div>
+      <div class="platform-hero-cta">Listen Now →</div>
+    </div>
+  </a>
+</div>
+
+<div class="platform-grid">
+  <a class="platform-card apple" href="https://music.apple.com/us/artist/forgotten-mogul/1858931234" target="_blank" rel="noopener noreferrer" style="--card-bg: none;">
+    <div class="platform-icon"></div>
+    <div class="platform-copy">
+      <div class="platform-name">Apple Music</div>
+      <div class="platform-meta">Open on Apple Music</div>
+    </div>
+  </a>
+
+  <a class="platform-card youtube" href="https://youtube.com/channel/UC0DlPLHrJIKPKnW_WjzF8fg?si=v9PFK20_A8h_bwTT" target="_blank" rel="noopener noreferrer" style="--card-bg: none;">
+    <div class="platform-icon">▶</div>
+    <div class="platform-copy">
+      <div class="platform-name">YouTube</div>
+      <div class="platform-meta">Watch on YouTube</div>
+    </div>
+  </a>
+
+  <a class="platform-card instagram" href="https://www.instagram.com/forgottenmogul?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" style="--card-bg: none;">
+    <div class="platform-icon">◎</div>
+    <div class="platform-copy">
+      <div class="platform-name">Instagram</div>
+      <div class="platform-meta">Follow on Instagram</div>
+    </div>
+  </a>
+
+  <a class="platform-card tiktok" href="https://www.tiktok.com/@forgottenmogul.music?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" style="--card-bg: none;">
+    <div class="platform-icon">♪</div>
+    <div class="platform-copy">
+      <div class="platform-name">TikTok</div>
+      <div class="platform-meta">Follow on TikTok</div>
+    </div>
+  </a>
+</div>
+
+<!-- Optional background image setup for these cards:
+1. Add has-bg to the class, for example: class="platform-card apple has-bg"
+2. Change style to: style="--card-bg: url('images/apple-platform-bg.png');"
+3. To remove the background later, switch it back to: style="--card-bg: none;"
+-->
+    <div class="platform-copy">
+      <div class="platform-name">Apple Music</div>
+      <div class="platform-meta">Open on Apple Music</div>
+    </div>
+  </a>
+
+  <a class="platform-card youtube" href="https://youtube.com/channel/UC0DlPLHrJIKPKnW_WjzF8fg?si=v9PFK20_A8h_bwTT" target="_blank" rel="noopener noreferrer">
+    <div class="platform-icon">▶</div>
+    <div class="platform-copy">
+      <div class="platform-name">YouTube</div>
+      <div class="platform-meta">Watch on YouTube</div>
+    </div>
+  </a>
+
+  <a class="platform-card instagram" href="https://www.instagram.com/forgottenmogul?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">
+    <div class="platform-icon">◎</div>
+    <div class="platform-copy">
+      <div class="platform-name">Instagram</div>
+      <div class="platform-meta">Follow on Instagram</div>
+    </div>
+  </a>
+
+  <a class="platform-card tiktok" href="https://www.tiktok.com/@forgottenmogul.music?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer">
+    <div class="platform-icon">♪</div>
+    <div class="platform-copy">
+      <div class="platform-name">TikTok</div>
+      <div class="platform-meta">Follow on TikTok</div>
+    </div>
+  </a>
+</div>
+            <div class="platform-copy">
+              <div class="platform-name">Spotify</div>
+              <div class="platform-meta">Listen on Spotify</div>
+            </div>
+          </a>
+          <a class="platform-card apple" href="https://music.apple.com/us/artist/forgotten-mogul/1858931234" target="_blank" rel="noopener noreferrer">
+            <div class="platform-icon"></div>
+            <div class="platform-copy">
+              <div class="platform-name">Apple Music</div>
+              <div class="platform-meta">Open on Apple Music</div>
+            </div>
+          </a>
+          <a class="platform-card youtube" href="https://youtube.com/channel/UC0DlPLHrJIKPKnW_WjzF8fg?si=v9PFK20_A8h_bwTT" target="_blank" rel="noopener noreferrer">
+            <div class="platform-icon">▶</div>
+            <div class="platform-copy">
+              <div class="platform-name">YouTube</div>
+              <div class="platform-meta">Watch on YouTube</div>
+            </div>
+          </a>
+          <a class="platform-card instagram" href="https://www.instagram.com/forgottenmogul?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">
+            <div class="platform-icon">◎</div>
+            <div class="platform-copy">
+              <div class="platform-name">Instagram</div>
+              <div class="platform-meta">Follow on Instagram</div>
+            </div>
+          </a>
+          <a class="platform-card tiktok" href="https://www.tiktok.com/@forgottenmogul.music?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer">
+            <div class="platform-icon">♪</div>
+            <div class="platform-copy">
+              <div class="platform-name">TikTok</div>
+              <div class="platform-meta">Follow on TikTok</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="panel contact-card">
+        <div class="section-kicker">Contact</div>
+        <h3>Collaborations, media, and inquiries</h3>
+        <p>
+          For direct contact, business questions, collaborations, or media outreach, use the email below.
+        </p>
+        <div class="contact-line">
+          <a href="mailto:forgottenmogul.music@gmail.com">forgottenmogul.music@gmail.com</a>
+        </div>
+        <p class="small">
+          As new releases go live, this contact section can also support booking, features, licensing, or press requests.
+        </p>
+      </div>
+    </div>
+  </section>
+
+    <div class="player-modal" id="playerModal" aria-hidden="true">
+    <div class="player-modal-panel" role="dialog" aria-modal="true" aria-labelledby="playerModalTitle">
+      <button class="player-modal-close" id="playerModalClose" aria-label="Close player">×</button>
+      <div class="player-modal-grid">
+        <div class="player-modal-art">
+          <img id="playerModalArt" src="" alt="Release artwork" />
+        </div>
+        <div>
+          <div class="player-modal-label">Now playing</div>
+          <h2 class="player-modal-title" id="playerModalTitle">Release</h2>
+          <div class="player-modal-subtitle" id="playerModalSubtitle">Forgotten Mogul</div>
+          <p class="player-modal-copy" id="playerModalCopy"></p>
+          <div class="player-modal-links" id="playerModalLinks"></div>
+          <div class="player-embed-wrap" id="playerModalEmbedWrap" hidden>
+            <iframe id="playerModalEmbed" src="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap">© 2026 Forgotten Mogul. All rights reserved.</div>
+  </footer>
+  <script>
+    document.querySelectorAll('.release-art.has-preview video').forEach((video) => {
+      const src = video.dataset.preview;
+      if (src) video.src = src;
+
+      const card = video.closest('.release-card');
+      const art = video.closest('.release-art');
+
+      const startPreview = async () => {
+        if (!video.src) return;
+        try {
+          card.classList.add('is-playing');
+          await video.play();
+        } catch (error) {
+          card.classList.remove('is-playing');
+        }
+      };
+
+      const stopPreview = () => {
+        video.pause();
+        video.currentTime = 0;
+        card.classList.remove('is-playing');
+      };
+
+      art.addEventListener('mouseenter', startPreview);
+      art.addEventListener('mouseleave', stopPreview);
+      art.addEventListener('focusin', startPreview);
+      art.addEventListener('focusout', stopPreview);
+    });
+
+    const modal = document.getElementById('playerModal');
+    const modalClose = document.getElementById('playerModalClose');
+    const modalTitle = document.getElementById('playerModalTitle');
+    const modalSubtitle = document.getElementById('playerModalSubtitle');
+    const modalArt = document.getElementById('playerModalArt');
+    const modalCopy = document.getElementById('playerModalCopy');
+    const modalLinks = document.getElementById('playerModalLinks');
+    const modalEmbed = document.getElementById('playerModalEmbed');
+    const modalEmbedWrap = document.getElementById('playerModalEmbedWrap');
+
+    const openModal = (card) => {
+      modalTitle.textContent = card.dataset.title || 'Release';
+      modalSubtitle.textContent = card.dataset.subtitle || 'Forgotten Mogul';
+      modalArt.src = card.dataset.art || '';
+      modalArt.alt = `${card.dataset.title || 'Release'} artwork`;
+      modalCopy.textContent = card.dataset.description || '';
+
+      const links = [
+        { label: 'Spotify', href: card.dataset.spotify },
+        { label: 'Apple', href: card.dataset.apple },
+        { label: 'YouTube', href: card.dataset.youtube }
+      ].filter(link => link.href);
+
+      modalLinks.innerHTML = links.map(link => `<a href="${link.href}" target="_blank" rel="noopener noreferrer">${link.label}</a>`).join('');
+
+      if (card.dataset.embed) {
+        modalEmbed.src = card.dataset.embed;
+        modalEmbedWrap.hidden = false;
+      } else {
+        modalEmbed.src = '';
+        modalEmbedWrap.hidden = true;
+      }
+
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalEmbed.src = '';
+      document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('.release-card').forEach((card) => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', (event) => {
+        const clickedLink = event.target.closest('a');
+        if (clickedLink) return;
+        openModal(card);
+      });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  </script>
 </body>
 </html>
